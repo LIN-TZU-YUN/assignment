@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[3]:
+
+
+headNum=int(input('number of the head in the cage'))
+
+
+# In[4]:
+
+
+legNum=int(input('number of the leg in the cage'))
+
+
+# In[7]:
+
+
+chickenNum=int((4*headNum-legNum)/2)
+
+
+# In[8]:
+
+
+rabbitsNum=headNum-chickenNum
+
+
+# In[9]:
+
+
+print(chickenNum,rabbitsNum)
+
+
+# In[ ]:
+
+
+
+
