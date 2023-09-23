@@ -1,0 +1,11 @@
+#build a tuple called a
+a=(0,1,23,456)
+print(a)
+#check if one number exists in the tuple
+if 23 in a:
+    print(True)
+else:
+    print(false)
+#retrieve one element from the tuple    
+
+print(a[3])
