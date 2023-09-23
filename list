@@ -1,0 +1,25 @@
+#build one list called a
+a=[1,2,3,4,5]
+#measure the length of a 
+len(a)
+#change a[4] to zero
+a[4]=0
+print(a)
+#delete a[0]
+del a[0]
+print(a)
+#a is arranged from small numbers to big numbers
+arrange=sorted(a)
+print(arrange)
+#previous order is reversed by slicing
+print(a[::-1])
+#get one element from the list
+print(a[-2])
+#use slicing to retrieve the elements from the list
+print(a[:4:2])
+#check if one number exists in the list or not
+number=3
+if number in a:
+    print(True)
+else:
+    print(False)
