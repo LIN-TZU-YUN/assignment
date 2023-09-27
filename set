@@ -1,0 +1,9 @@
+#settle one set
+s={1,2,3,4}
+#add one new number into the set
+s.add(5)
+print(s)
+#wipe one number out of the set
+s.remove(5)
+print(s)
+4 in s
