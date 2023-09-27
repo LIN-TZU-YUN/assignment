@@ -1,0 +1,8 @@
+#settle one dictionary for age and name
+d={'koala':15,'cat':16}
+#update the dictionary
+d2={'penguin':20}
+d.update(d2)
+print(d)
+#retrieve the name from the dictionary
+d['koala']
