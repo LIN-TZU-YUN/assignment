@@ -1,0 +1,16 @@
+import random
+target_number=random.randint(0,100)
+n=int(input('guess one number'))
+while True:
+    n=target_number
+    print('you are an impressive guy,bingo')
+    try:
+        n==int
+    except TypeError:
+        print('accident')
+else:
+    if target_number>n:
+        print('the numbeer given by you is so big')
+    elif target_number<n:
+        print('the number given by you is too small')
+break        
