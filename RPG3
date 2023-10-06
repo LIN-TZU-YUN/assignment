@@ -1,0 +1,17 @@
+while True:
+    num_input = input("give one number（click enter to opt out）：")
+    if num_input == "":
+        break
+    try:
+        num = int(num_input)
+        if num <= 0:
+            print("請輸入正整數！")
+            continue
+        factors = []
+        for i in range(1, num + 1):
+            if num % i == 0:
+                factors.append(i)
+        print(f"{num}的所有因數是：{factors}")
+    except ValueError:
+        print("請輸入正整數！")
+        continue
