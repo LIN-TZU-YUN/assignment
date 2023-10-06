@@ -1,0 +1,8 @@
+def addToInventory(inventory, added_items):
+    for item in added_items:
+        inventory[item] = inventory.get(item, 0) + 1
+    return inventory
+inventory = {'索仔': 1, '火把': 6, '銀角仔': 42, '刀仔': 1, '箭': 12}
+dragonLoot = ['銀角仔', '刀仔', '銀角仔', '銀角仔', '紅寶石']
+inventory = addToInventory(inventory, dragonLoot)
+displayInventory(inventory)
