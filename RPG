@@ -1,0 +1,9 @@
+def displayInventory(inventory):
+    print("objects：")
+    total_items = 0
+    for item, quantity in inventory.items():
+        print(f"{item}: {quantity}")
+        total_items += quantity
+    print("total amount：", total_items)
+inventory = {'索仔': 1, '火把': 6, '銀角仔': 42, '刀仔': 1, '箭': 12}
+displayInventory(inventory)
