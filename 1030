@@ -1,0 +1,7 @@
+url = "https://www.tcll.ntnu.edu.tw/index.php/faculty/"
+response = requests.get(url)
+html_code = response.text
+emailPattern = r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+'
+emailAddresses = re.findall(emailPattern, html_code)
+for email in emailAddresses:
+    print(email)
