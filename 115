@@ -1,0 +1,35 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+
+url = "https://tw-nba.udn.com/nba/cate/6754"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, "html.parser")
+
+
+titles = []
+summaries = []
+links = []
+image_links = []
+
+
+news_items = soup.find_all("div", class_="story-list__news")
+
+for item in news_items:
+    title = item.find("h3").text.strip()
+    summary = item.find("p", class_="story-list__text").text.strip()
+    link = "https://tw-nba.udn.com" + item.find("a")["href"]
+    image_link = item.find("img")["src"]
+
+    titles.append(title)
+    summaries.append(summary)
+    links.append(link)
+    image_links.append(image_link)
+
+ 
+data = {"標題": titles,"摘要": summaries,"新聞連結": links,"圖片連結": image_links}
+df = pd.DataFrame(data)
+
+
+df.to_csv("nba_news.csv", index=False)
