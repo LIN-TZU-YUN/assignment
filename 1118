@@ -1,0 +1,10 @@
+table = soup.find('table', class_='font16')
+trs = table.find_all('tr')
+for tr in trs:
+ tds = tr.find_all('td')
+    if len(tds) == 3:
+        店號 = tds[0].text.strip()
+        店名 = tds[1].text.strip()
+        地址 = tds[2].text.strip()
+
+print(f"店號: {店號}, 店名: {店名}, 地址: {地址}")
