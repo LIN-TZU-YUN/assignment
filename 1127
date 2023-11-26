@@ -1,0 +1,32 @@
+# List to store data for CSV
+data_list = []
+
+
+cos = []
+
+while True:
+    co = input('請輸入公司代碼：（按Enter結束）')
+    if co == '':
+        break
+    else:
+        cos.append(co)
+
+
+for company_code in cos:
+    # Get revenue data
+    result = get_revenue_data(company_code)
+
+    # If data is available, add it to the data list
+    if result:
+        data_list.append([company_code] + list(result))
+
+# Save data to CSV
+csv_file_path = 'revenue_data.csv'
+with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
+    csv_writer = csv.writer(csv_file)
+    # Write header
+    csv_writer.writerow(['公司代號', '公司名稱', '本月營收金額', '增減百分比（本月）', '增減百分比（累計）'])
+    # Write data
+    csv_writer.writerows(data_list)
+
+print(f'Data saved to {csv_file_path}')
