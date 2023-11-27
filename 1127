@@ -1,3 +1,10 @@
+response = requests.post(url, data=form_data)
+if response.status_code == 200:
+    soup = BeautifulSoup(response.text, 'html.parser')
+    company_name = soup.find('span', {'class': ''}).text
+    revenue_amount = soup.find('span', {'class': ''}).text
+    increase_percentage_monthly = soup.find('span', {'class': ''}).text
+    increase_percentage_accumulated = soup.find('span', {'class': ''}).text
 # List to store data for CSV
 data_list = []
 
