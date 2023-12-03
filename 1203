@@ -1,0 +1,52 @@
+payload = {
+    "Market": "sii",
+    "SysName": "營運概況",
+    "reportName": "開立發票及營業收入資訊",
+    "compID": "2330",  # Replace with the desired company code
+    "progName": "t05st10_ifrs",
+    "QNum": "2",
+    "Q1N": "公司代號",
+    "Q1V": "2330",  # Replace with the desired company code
+    "Q2N": "資料年月",
+    "Q2V": ""  # Replace with the desired date or leave it empty for the latest data
+}
+
+# Make a POST request to the API
+response = requests.post(url, data=payload)
+
+# Check if the request was successful (status code 200)
+if response.status_code == 200:
+    # Print the response content (JSON format, if applicable)
+    print(response.json())
+else:
+    # Print an error message if the request was not successful
+    print(f"Error: {response.status_code} - {response.text}")
+
+def get_data_using_selenium():
+    webdriver_path = "/path/to/chromedriver"
+    driver = webdriver.Chrome(executable_path=webdriver_path)
+
+    driver.get("URL_TO_YOUR_TARGET_WEBPAGE")
+
+    company_code_input = driver.find_element_by_name("Q1V")
+    company_code_input.send_keys("2330")
+
+    company_code_input.send_keys(Keys.RETURN)
+
+    time.sleep(3)
+
+    financial_data = driver.find_element_by_css_selector("YOUR_CSS_SELECTOR_FOR_FINANCIAL_DATA").text
+
+    driver.quit()
+    return financial_data
+
+# Example usage
+use_api = True  # Set to False if you want to use Selenium instead
+
+if use_api:
+    data = get_data_using_api()
+    if data:
+        print(data)
+else:
+    data = get_data_using_selenium()
+    print(data)
