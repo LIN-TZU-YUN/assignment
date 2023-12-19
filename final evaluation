@@ -1,0 +1,70 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
+path = r'C:\Users\USER\Desktop\chromedriver.exe'
+service=Service(executable_path=path)
+service
+
+chrome=webdriver.Chrome(service=service)
+chrome.get('https://au.news.yahoo.com/tagged/koalas/')
+chrome.page_source
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+import os
+
+# 设置桌面路径
+desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+folder_path = os.path.join(desktop_path, "期末報告")
+
+# 创建期末報告文件夹
+os.makedirs(folder_path, exist_ok=True)
+
+path = r'C:\Users\USER\Desktop\chromedriver.exe'
+service = Service(executable_path=path)
+chrome = webdriver.Chrome(service=service)
+chrome.get('https://au.news.yahoo.com/tagged/koalas/')
+
+# 等待页面加载完成（可以根据实际情况调整等待条件）
+# 这里简单地等待5秒，您可能需要根据页面加载时间进行调整
+chrome.implicitly_wait(5)
+
+# 找到所有具有 class='StretchedBox' 的元素
+elements = chrome.find_elements(By.CLASS_NAME, 'StretchedBox')
+
+# 循环点击前10个元素
+for index, element in enumerate(elements):
+    if index == 0:
+        # 跳过第一个元素
+        continue
+
+    element.click()
+
+    # 在这里添加您希望执行的其他操作
+
+    # 等待页面加载完成
+    # 这里简单地等待5秒，您可能需要根据页面加载时间进行调整
+    chrome.implicitly_wait(5)
+
+    # 爬取 # Find the second element with class="caas-img caas-lazy has-preview caas-loaded"
+    img_elements = chrome.find_elements(By.CLASS_NAME, 'caas-img')
+    if len(img_elements) > 1:
+        img_element = img_elements[2]
+    
+    # 生成文件名
+    file_name = f"image_{index}.png"
+
+    # 保存图片到期末報告文件夹
+    file_path = os.path.join(folder_path, file_name)
+    with open(file_path, 'wb') as file:
+        file.write(img_element.screenshot_as_png)
+
+    # 返回上一页
+    chrome.back()
+    continue
+
+
+# 关闭浏览器
+chrome.quit()
