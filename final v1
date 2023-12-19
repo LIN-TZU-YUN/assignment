@@ -1,0 +1,32 @@
+img_element = chrome.find_element(By.CLASS_NAME, 'caas-img')
+img_elements = chrome.find_elements(By.CLASS_NAME, 'caas-img')
+if len(img_elements) > 1:
+    img_element = img_elements[1]
+# ...
+
+for index, element in enumerate(elements):
+    if index == 0:
+        # Skip the first element
+        continue
+
+    element.click()
+
+    # Other operations...
+
+   
+
+        # Generate file name
+        file_name = f"image_{index}.png"
+
+        # Save image to the folder
+        file_path = os.path.join(folder_path, file_name)
+        with open(file_path, 'wb') as file:
+            file.write(img_element.screenshot_as_png)
+
+    # Return to the previous page
+    chrome.back()
+
+# Close the browser
+chrome.quit()
+if len(img_elements) > 1:
+    img_element = img_elements[1]
